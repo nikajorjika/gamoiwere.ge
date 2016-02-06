@@ -17,6 +17,24 @@
                                 <div class="vertical-dropdown-menu">
                                     <div class="vertical-groups">
                                         <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="block-content-vertical-menu border-left">
+                                                    <h3 class="head">კატეგორიები</h3>
+                                                    <div class="inner">
+                                                        <ul class="vertical-menu-link">
+                                                            @if(isset($c->Subcategory[0]))
+                                                                @foreach($c->SubCategory as $s)
+                                                                    <li>
+                                                                        <a href="{{url()}}/subcategory/{{$s->id}}">
+                                                                            <span class="text">{{$s->title_geo}}</span>
+                                                                        </a>
+                                                                    </li>
+                                                                @endforeach
+                                                            @endif
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="col-sm-3">
                                                 <div class="block-content-vertical-menu border banner-hover">
                                                     <a href="{{url()}}/category/{{$c->id}}"><img src="{{url()}}/uploads/category/{{$c->image}}" alt="{{$c->title_geo}}"></a>
@@ -30,24 +48,6 @@
                                                     <div class="inner">
                                                         <p>{{$c->small_text}}</p>
                                                         <a href="{{url()}}/category/{{$c->id}}" class="button-radius">შეიძინე<span class="icon"></span></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <div class="block-content-vertical-menu border-left">
-                                                    <h3 class="head">კატეგორიები</h3>
-                                                    <div class="inner">
-                                                        <ul class="vertical-menu-link">
-                                                            @if(isset($c->Subcategory[0]))
-                                                                @foreach($c->SubCategory as $s)
-                                                                <li>
-                                                                    <a href="{{url()}}/subcategory/{{$s->id}}">
-                                                                        <span class="text">{{$s->title_geo}}</span>
-                                                                    </a>
-                                                                </li>
-                                                                @endforeach
-                                                                @endif
-                                                        </ul>
                                                     </div>
                                                 </div>
                                             </div>

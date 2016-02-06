@@ -71,12 +71,14 @@
                     <div>
                         <div class="form-group">
                             <h3>აირჩიე მდებარეობა</h3>
-                            <select name="spec">
-                                <option value="0">მთავარი</option>
-                                <option value="1">მხოლოდ შენთვის</option>
-                                <option value="2">ცხელი შემოთავაზება</option>
-                                <option value="3">ყველაზე ნახვადი</option>
-                            </select>
+                            {!! Form::checkbox('spec[]', '0') !!}
+                            {!! Form::label('spec', 'მხოლოდ შენთვის') !!}
+                            {!! Form::checkbox('spec[]', '1') !!}
+                            {!! Form::label('spec', 'ცხელი შემოთავაზება') !!}
+                            {!! Form::checkbox('spec[]', '2') !!}
+                            {!! Form::label('spec', 'მთავარი') !!}
+                            {!! Form::checkbox('spec[]', '3') !!}
+                            {!! Form::label('spec', 'Top Seller') !!}
                         </div>
                         <div class="form-group">
                             <label for="price">ფასი:</label>

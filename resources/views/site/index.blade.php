@@ -12,32 +12,32 @@
                     <div class="block-inner">
                         <ul class="products kt-owl-carousel" data-margin="20" data-loop="true" data-nav="true" data-responsive='{"0":{"items":1},"600":{"items":2},"768":{"items":1}}'>
                             @foreach($onlyur as $o)
-                            <li class="product">
-                                <div class="product-container">
-                                    <div class="product-left">
-                                        <div class="product-thumb">
-                                            <a class="product-img" href="{{url()}}/item/{{$o->slug}}/{{$o->id}}"><img src="{{url()}}/uploads/item/{{$o->main_image}}" alt="Product"></a>
-                                            <a title="Quick View" href={{url()}}/item/{{$o->slug}}/{{$o->id}}" class="btn-quick-view">Quick View</a>
+                                <li class="product">
+                                    <div class="product-container">
+                                        <div class="product-left">
+                                            <div class="product-thumb">
+                                                <a class="product-img" href="{{url()}}/item/{{$o->slug}}/{{$o->id}}"><img src="{{url()}}/uploads/item/{{$o->main_image}}" alt="Product"></a>
+                                                <a title="Quick View" href={{url()}}/item/{{$o->slug}}/{{$o->id}}" class="btn-quick-view">Quick View</a>
+                                            </div>
+                                            <div class="product-status">
+                                                <span class="new">მხოლოდ შენთვის</span>
+                                            </div>
                                         </div>
-                                        <div class="product-status">
-                                            <span class="new">მხოლოდ შენთვის</span>
+                                        <div class="product-right">
+                                            <div class="product-name">
+                                                <a href="{{url()}}/item/{{$o->slug}}/{{$o->id}}">{{$o->title_geo}}</a>
+                                            </div>
+                                            <div class="price-box">
+                                                <span class="product-price">{{$o->price}} <span class="lari">a</span></span>
+                                                {{--<span class="product-price-old"></span>--}}
+                                            </div>
+                                            <div class="product-button">
+                                                <a class="btn-add-wishlist" title="Add to Wishlist" href="#">დაამატე კალათაში</a>
+                                                <a class="button-radius btn-add-cart" title="Add to Cart" href="#">ყიდვა<span class="icon"></span></a>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="product-right">
-                                        <div class="product-name">
-                                            <a href="{{url()}}/item/{{$o->slug}}/{{$o->id}}">{{$o->title_geo}}</a>
-                                        </div>
-                                        <div class="price-box">
-                                            <span class="product-price">{{$o->price}} <span class="lari">a</span></span>
-                                            {{--<span class="product-price-old"></span>--}}
-                                        </div>
-                                        <div class="product-button">
-                                            <a class="btn-add-wishlist" title="Add to Wishlist" href="#">დაამატე კალათაში</a>
-                                            <a class="button-radius btn-add-cart" title="Add to Cart" href="#">ყიდვა<span class="icon"></span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
+                                </li>
                             @endforeach
                         </ul>
                     </div>
@@ -288,44 +288,44 @@
                     <div class="block-head">
                         <h3 class="block-title">ახალი დამატებულები</h3>
                         <ul class="nav-tab default">
-                            <li class="active"><a data-toggle="tab" href="#tab-1">კაცი</a></li>
-                            <li><a data-toggle="tab" href="#tab-2">ქალი</a></li>
-                            <li><a data-toggle="tab" href="#tab-3">Jewelry</a></li>
+                            @foreach($category as $c)
+                            <li><a data-toggle="tab" href="#category-{{$c->id}}">{{$c->title_geo}}</a></li>
+                            @endforeach
                         </ul>
                     </div>
                     <div class="block-inner">
                         <div class="tab-container">
-                            <div id="tab-1" class="tab-panel active">
+                            <div id="category-{{$c->id}}" class="tab-panel">
                                 <ul class="products kt-owl-carousel" data-margin="20" data-loop="true" data-nav="true" data-responsive='{"0":{"items":1},"600":{"items":3},"768":{"items":2},"1000":{"items":3},"1200":{"items":4}}'>
-                                   @foreach($itemsman as $i)
+                                    @foreach($category1 as $i)
                                         <li class="product">
-                                        <div class="product-container">
-                                            <div class="product-left">
-                                                <div class="product-thumb">
-                                                    <a class="product-img" href="{{url()}}/item/{{$i->slug}}/{{$i->id}}"><img src="{{url()}}/uploads/item/{{$i->main_image}}" alt="{{$i->title_geo}}"></a>
-                                                    <a title="Quick View" href="{{url()}}/item/{{$i->slug}}/{{$i->id}}" class="btn-quick-view">ნახვა</a>
+                                            <div class="product-container">
+                                                <div class="product-left">
+                                                    <div class="product-thumb">
+                                                        <a class="product-img" href="{{url()}}/item/{{$i->slug}}/{{$i->id}}"><img src="{{url()}}/uploads/item/{{$i->main_image}}" alt="{{$i->title_geo}}"></a>
+                                                        <a title="Quick View" href="{{url()}}/item/{{$i->slug}}/{{$i->id}}" class="btn-quick-view">ნახვა</a>
+                                                    </div>
+                                                </div>
+                                                <div class="product-right">
+                                                    <div class="product-name">
+                                                        <a href="{{url()}}/item/{{$i->slug}}/{{$i->id}}">{{$i->title_geo}}</a>
+                                                    </div>
+                                                    <div class="price-box">
+                                                        <span class="product-price">{{$i->price}} <span class="lari">b</span></span>
+                                                    </div>
+                                                    <div class="product-button">
+                                                        <a class="btn-add-wishlist" title="დაამატე კალათაში" href="#">დაამატე კალათაში</a>
+                                                        <a class="button-radius btn-add-cart" title="Add to Cart" href="#">ყიდვა<span class="icon"></span></a>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="product-right">
-                                                <div class="product-name">
-                                                    <a href="{{url()}}/item/{{$i->slug}}/{{$i->id}}">{{$i->title_geo}}</a>
-                                                </div>
-                                                <div class="price-box">
-                                                    <span class="product-price">{{$i->price}} <span class="lari">b</span></span>
-                                                </div>
-                                                <div class="product-button">
-                                                    <a class="btn-add-wishlist" title="დაამატე კალათაში" href="#">დაამატე კალათაში</a>
-                                                    <a class="button-radius btn-add-cart" title="Add to Cart" href="#">ყიდვა<span class="icon"></span></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                       @endforeach
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
-                            <div id="tab-2" class="tab-panel">
+                            <div id="category-1" class="tab-panel">
                                 <ul class="products kt-owl-carousel" data-margin="20" data-loop="true" data-nav="true" data-responsive='{"0":{"items":1},"600":{"items":3},"768":{"items":2},"1000":{"items":3},"1200":{"items":4}}'>
-                                    @foreach($itemswoman as $i)
+                                    @foreach($category2 as $i)
                                         <li class="product">
                                             <div class="product-container">
                                                 <div class="product-left">
@@ -468,33 +468,33 @@
                     </div>
                     <div class="block-inner">
                         <ul class="products kt-owl-carousel" data-margin="20" data-loop="true" data-nav="true" data-responsive='{"0":{"items":1},"600":{"items":3},"768":{"items":2},"1000":{"items":3},"1200":{"items":4}}'>
-                           @foreach($itemshot as $i)
-                            <li class="product">
-                                <div class="product-container">
-                                    <div class="product-left">
-                                        <div class="product-thumb">
-                                            <a class="product-img" href="{{url()}}/item/item/{{$i->slug}}/{{$i->id}}"><img src="{{url()}}/uploads/item/{{$i->main_image}}" alt="{{$i->title_geo}}"></a>
-                                            <a title="Quick View" href="{{url()}}/item/item/{{$i->slug}}/{{$i->id}}" class="btn-quick-view">ნახვა</a>
+                            @foreach($itemshot as $i)
+                                <li class="product">
+                                    <div class="product-container">
+                                        <div class="product-left">
+                                            <div class="product-thumb">
+                                                <a class="product-img" href="{{url()}}/item/item/{{$i->slug}}/{{$i->id}}"><img src="{{url()}}/uploads/item/{{$i->main_image}}" alt="{{$i->title_geo}}"></a>
+                                                <a title="Quick View" href="{{url()}}/item/item/{{$i->slug}}/{{$i->id}}" class="btn-quick-view">ნახვა</a>
+                                            </div>
+                                        </div>
+                                        <div class="product-right">
+                                            <div class="product-name">
+                                                <a href="#">{{$i->title_geo}}</a>
+                                            </div>
+                                            <div class="price-box">
+                                                <span class="product-price">{{$i->price}}</span>
+                                            </div>
+                                            <div class="product-button">
+                                                <a class="btn-add-wishlist" title="Add to Wishlist" href="#">დაამატე კალათაში</a>
+                                                <a class="button-radius btn-add-cart" title="Add to Cart" href="#">შეძენა<span class="icon"></span></a>
+                                            </div>
+                                        </div>
+                                        <div class="product-count-down">
+                                            <span class="countdown-lastest" data-y="2016" data-m="10" data-d="1" data-h="00" data-i="00" data-s="00"></span>
                                         </div>
                                     </div>
-                                    <div class="product-right">
-                                        <div class="product-name">
-                                            <a href="#">{{$i->title_geo}}</a>
-                                        </div>
-                                        <div class="price-box">
-                                            <span class="product-price">{{$i->price}}</span>
-                                        </div>
-                                        <div class="product-button">
-                                            <a class="btn-add-wishlist" title="Add to Wishlist" href="#">დაამატე კალათაში</a>
-                                            <a class="button-radius btn-add-cart" title="Add to Cart" href="#">შეძენა<span class="icon"></span></a>
-                                        </div>
-                                    </div>
-                                    <div class="product-count-down">
-                                        <span class="countdown-lastest" data-y="2016" data-m="10" data-d="1" data-h="00" data-i="00" data-s="00"></span>
-                                    </div>
-                                </div>
-                            </li>
-                               @endforeach
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>

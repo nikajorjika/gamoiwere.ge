@@ -24,7 +24,7 @@ class Items extends Migration
             $table->string('big_image');
             $table->string('images');
             $table->integer('price');
-            $table->integer('spec');
+            $table->string('spec');
             $table->string('slug');
             $table->integer('category_id')->unsigned()->nullable();
             $table->foreign('category_id')->references('id')->on('category')->onDelete('cascade');

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Items extends Model
 {
     protected $table = 'items';
-    protected $fillable = array('title_geo','title_eng','title_rus','content_geo','content_eng','content_rus','category_id','slug','main_image','big_image','images','price','subcategory_id');
+    protected $fillable = array('title_geo','title_eng','title_rus','content_geo','content_eng','content_rus','category_id','slug','main_image','big_image','images[]','price','subcategory_id');
 
     public function Category()
     {

@@ -45,13 +45,14 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
+        $spec = implode('-',$request->get('spec'));
         $item = new Items();
         $item->fill($request->all());
         $pieces = explode("-", $request->input('category'));
         $item->category_id =$pieces[1];
         $item->subcategory_id =$pieces[0];
-        $item->spec = $request->input('spec');
-        $slug = Helpers::makeSlug($request->input('title_geo'), 'items');
+        $item->spec = $spec;
+        $slug = Helpers::makeSlug($request->input('title_geo'));
         $item->slug = $slug;
 
         $image = $request->file('main_image');

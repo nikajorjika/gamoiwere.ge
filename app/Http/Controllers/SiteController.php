@@ -25,6 +25,7 @@ use Illuminate\Support\Facades\Redirect;
 
 class SiteController extends Controller
 {
+
     public function checkLogin(Request $request)
     {
         if (Auth::user()->check()){
@@ -67,8 +68,16 @@ class SiteController extends Controller
         $data['sideslider'] = SideSlider::orderBy('created_at', 'asc')->get();
         $data['partner'] = Partner::orderBy('created_at', 'asc')->get();
         $data['category'] = Category::with('SubCategory')->orderBy('created_at', 'asc')->get();
-        $data['itemsman'] = Items::where('category_id','3')->orderBy('created_at', 'asc')->get();
-        $data['itemswoman'] = Items::where('category_id','8')->orderBy('created_at', 'asc')->get();
+        $category = $data['category'] = Category::with('SubCategory')->orderBy('created_at', 'asc')->get();
+        foreach($category as $c)
+        {
+            $data['category'.$c->id] = Items::where('category_id',$c->id)->orderBy('created_at', 'asc')->get();
+        }
+        foreach($category as $c)
+        {
+            $data['categoryfor'] = '$cateogry'.$c->id;
+        }
+
         $data['itemshot'] = Items::where('spec','2')->orderBy('created_at', 'asc')->get();
         $data['onlyur'] = Items::where('spec','1')->get();
         $data['news'] = News::orderBy('created_at', 'asc')->take(3)->skip(0)->get();
@@ -83,6 +92,8 @@ class SiteController extends Controller
     }
     public function ShowNews()
     {
+
+        $data['category'] = Category::with('SubCategory')->orderBy('created_at', 'asc')->get();
         $data['slider'] = Slide::orderBy('created_at', 'asc')->get();
         $data['sideslider'] = SideSlider::orderBy('created_at', 'asc')->get();
         $data['news'] = News::orderBy('created_at', 'desc')->paginate(5);
@@ -193,6 +204,8 @@ class SiteController extends Controller
         return view('site.news');
     }
     public function showNewsDetail($slug, $id){
+
+        $data['category'] = Category::with('SubCategory')->orderBy('created_at', 'asc')->get();
         $data['comment'] = Comment::where('news_id',$id)->get();
         $data['slider'] = Slide::orderBy('created_at', 'asc')->get();
         $data['sideslider'] = SideSlider::orderBy('created_at', 'asc')->get();

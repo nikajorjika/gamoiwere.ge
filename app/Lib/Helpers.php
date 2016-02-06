@@ -44,14 +44,12 @@ class Helpers{
         echo '</ul>';
     }
 
-    public static function makeSlug($title, $tableName){
+    public static function makeSlug($title){
         $geo = [' ', 'ა', 'ბ', 'გ', 'დ', 'ე', 'ვ', 'ზ', 'თ', 'ი', 'კ', 'ლ', 'მ', 'ნ', 'ო', 'პ', 'ჟ', 'რ', 'ს', 'ტ', 'უ', 'ფ', 'ქ', 'ღ', 'ყ', 'შ', 'ჩ', 'ც', 'ძ', 'წ', 'ჭ', 'ხ', 'ჯ', 'ჰ'];
         $geoEng = ['-', 'a', 'b', 'g', 'd', 'e', 'v', 'z', 't', 'i', 'k', 'l', 'm', 'n', 'o', 'p', 'zh', 'r', 's', 't', 'u', 'f', 'q', 'gh', 'y', 'sh', 'ch', 'c', 'dz', 'w', 'tch', 'x', 'j', 'h'];
         $slug = str_slug(str_replace($geo, $geoEng, $title), '-');
-        if(self::checkSlug($slug, $tableName) == 0){
             return $slug;
-        }
-        return "";
+
     }
 
     private static function checkSlug($slug, $tableName){
