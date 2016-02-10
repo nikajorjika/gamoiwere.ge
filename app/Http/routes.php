@@ -219,6 +219,27 @@ Route::group(['prefix' => 'admin'], function () {
         ])->where('id', '[0-9]+');
 
     });
+    Route::group(['prefix' => 'color'], function () {
+
+        Route::get('/', [
+            'middleware' => 'auth',
+            'uses' => 'ItemColors@index',
+            'as' => 'admin.color.show',
+        ]);
+
+        Route::post('/', [
+            'middleware' => 'auth',
+            'uses' => 'ItemColors@store',
+        ]);
+
+
+        Route::get('delete/{id}', [
+            'middleware' => 'auth',
+            'uses' => 'ItemColors@destroy',
+            'as' => 'admin.color.delete',
+        ])->where('id', '[0-9]+');
+
+    });
     Route::group(['prefix' => 'item'], function () {
 
         Route::get('/', [

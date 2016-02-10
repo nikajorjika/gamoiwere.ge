@@ -15,8 +15,6 @@ class ItemSize extends Migration
         Schema::create('item_size', function (Blueprint $table) {
             $table->increments('id');
             $table->string('size');
-            $table->integer('item_id')->unsigned()->nullable;
-            $table->foreign('item_id')->references('id')->on('album')->onDelete('cascade');
             $table->timestamps();
         });
     }

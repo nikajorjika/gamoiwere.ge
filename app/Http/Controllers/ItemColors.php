@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Redirect;
 
 class ItemColors extends Controller
 {
@@ -16,7 +17,8 @@ class ItemColors extends Controller
      */
     public function index()
     {
-        //
+        $data['color'] = \App\ItemColors::orderBy('id','asc')->get();
+        return view('admin.color', $data);
     }
 
     /**
@@ -37,7 +39,10 @@ class ItemColors extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $color = new \App\ItemColors();
+        $color->fill($request->all());
+        $color->save();
+        return Redirect::back();
     }
 
     /**

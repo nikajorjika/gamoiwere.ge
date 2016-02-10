@@ -289,16 +289,18 @@
                         <h3 class="block-title">ახალი დამატებულები</h3>
                         <ul class="nav-tab default">
                             @foreach($category as $c)
-                            <li><a data-toggle="tab" href="#category-{{$c->id}}">{{$c->title_geo}}</a></li>
+                            <li class="items-title"><a data-toggle="tab" href="#category-{{$c->id}}">{{$c->title_geo}}</a></li>
                             @endforeach
                         </ul>
                     </div>
                     <div class="block-inner">
-                        <div class="tab-container">
-                            <div id="category-{{$c->id}}" class="tab-panel">
-                                <ul class="products kt-owl-carousel" data-margin="20" data-loop="true" data-nav="true" data-responsive='{"0":{"items":1},"600":{"items":3},"768":{"items":2},"1000":{"items":3},"1200":{"items":4}}'>
-                                    @foreach($category1 as $i)
-                                        <li class="product">
+                        <div class="tab-container ">
+                            @foreach($category as $c)
+                                <div id="category-{{$c->id}}" class="tab-panel items">
+                                    <ul class="products kt-owl-carousel" data-margin="20" data-loop="true" data-nav="true" data-responsive='{"0":{"items":1},"600":{"items":3},"768":{"items":2},"1000":{"items":3},"1200":{"items":4}}'>
+                                    @foreach($itemcar as $i)
+                                        @if($c->id == $i->category_id)
+                                <li class="product">
                                             <div class="product-container">
                                                 <div class="product-left">
                                                     <div class="product-thumb">
@@ -320,137 +322,20 @@
                                                 </div>
                                             </div>
                                         </li>
+                                            <?php
+                                                    foreach($itemcar as $key=>$i)
+                                                    {
+                                                        if($c->id == $i->category_id){
+                                                        unset($itemcar[$key]);
+                                                            }
+                                                    }
+                                            ?>
+                                            @else
+                                    </ul>
+                                                @endif
                                     @endforeach
-                                </ul>
-                            </div>
-                            <div id="category-1" class="tab-panel">
-                                <ul class="products kt-owl-carousel" data-margin="20" data-loop="true" data-nav="true" data-responsive='{"0":{"items":1},"600":{"items":3},"768":{"items":2},"1000":{"items":3},"1200":{"items":4}}'>
-                                    @foreach($category2 as $i)
-                                        <li class="product">
-                                            <div class="product-container">
-                                                <div class="product-left">
-                                                    <div class="product-thumb">
-                                                        <a class="product-img" href="{{url()}}/item/{{$i->slug}}/{{$i->id}}"><img src="{{url()}}/uploads/item/{{$i->main_image}}" alt="{{$i->title_geo}}"></a>
-                                                        <a title="Quick View" href="{{url()}}/item/{{$i->slug}}/{{$i->id}}" class="btn-quick-view">ნახვა</a>
-                                                    </div>
-                                                </div>
-                                                <div class="product-right">
-                                                    <div class="product-name">
-                                                        <a href="{{url()}}/item/{{$i->slug}}/{{$i->id}}">{{$i->title_geo}}</a>
-                                                    </div>
-                                                    <div class="price-box">
-                                                        <span class="product-price">{{$i->price}} <span class="lari">b</span></span>
-                                                    </div>
-                                                    <div class="product-button">
-                                                        <a class="btn-add-wishlist" title="დაამატე კალათაში" href="#">დაამატე კალათაში</a>
-                                                        <a class="button-radius btn-add-cart" title="Add to Cart" href="#">ყიდვა<span class="icon"></span></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                            <div id="tab-3" class="tab-panel">
-                                <ul class="products kt-owl-carousel" data-margin="20" data-loop="true" data-nav="true" data-responsive='{"0":{"items":1},"600":{"items":3},"768":{"items":2},"1000":{"items":3},"1200":{"items":4}}'>
-                                    <li class="product">
-                                        <div class="product-container">
-                                            <div class="product-left">
-                                                <div class="product-thumb">
-                                                    <a class="product-img" href="#"><img src="{{url()}}/assets/site/data/option3/p21.jpg" alt="Product"></a>
-                                                    <a title="Quick View" href="#" class="btn-quick-view">Quick View</a>
-                                                </div>
-                                            </div>
-                                            <div class="product-right">
-                                                <div class="product-name">
-                                                    <a href="#">Cotton Lycra Leggings</a>
-                                                </div>
-                                                <div class="price-box">
-                                                    <span class="product-price">$139.98</span>
-                                                    <span class="product-price-old">$169.00</span>
-                                                </div>
-                                                <div class="product-button">
-                                                    <a class="btn-add-wishlist" title="Add to Wishlist" href="#">Add Wishlist</a>
-                                                    <a class="btn-add-comparre" title="Add to Compare" href="#">Add Compare</a>
-                                                    <a class="button-radius btn-add-cart" title="Add to Cart" href="#">Buy<span class="icon"></span></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="product">
-                                        <div class="product-container">
-                                            <div class="product-left">
-                                                <div class="product-thumb">
-                                                    <a class="product-img" href="#"><img src="{{url()}}/assets/site/data/option3/p22.jpg" alt="Product"></a>
-                                                    <a title="Quick View" href="#" class="btn-quick-view">Quick View</a>
-                                                </div>
-                                            </div>
-                                            <div class="product-right">
-                                                <div class="product-name">
-                                                    <a href="#">Cotton Lycra Leggings</a>
-                                                </div>
-                                                <div class="price-box">
-                                                    <span class="product-price">$139.98</span>
-                                                    <span class="product-price-old">$169.00</span>
-                                                </div>
-                                                <div class="product-button">
-                                                    <a class="btn-add-wishlist" title="Add to Wishlist" href="#">Add Wishlist</a>
-                                                    <a class="btn-add-comparre" title="Add to Compare" href="#">Add Compare</a>
-                                                    <a class="button-radius btn-add-cart" title="Add to Cart" href="#">Buy<span class="icon"></span></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="product">
-                                        <div class="product-container">
-                                            <div class="product-left">
-                                                <div class="product-thumb">
-                                                    <a class="product-img" href="#"><img src="{{url()}}/assets/site/data/option3/p23.jpg" alt="Product"></a>
-                                                    <a title="Quick View" href="#" class="btn-quick-view">Quick View</a>
-                                                </div>
-                                            </div>
-                                            <div class="product-right">
-                                                <div class="product-name">
-                                                    <a href="#">Cotton Lycra Leggings</a>
-                                                </div>
-                                                <div class="price-box">
-                                                    <span class="product-price">$139.98</span>
-                                                    <span class="product-price-old">$169.00</span>
-                                                </div>
-                                                <div class="product-button">
-                                                    <a class="btn-add-wishlist" title="Add to Wishlist" href="#">Add Wishlist</a>
-                                                    <a class="btn-add-comparre" title="Add to Compare" href="#">Add Compare</a>
-                                                    <a class="button-radius btn-add-cart" title="Add to Cart" href="#">Buy<span class="icon"></span></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="product">
-                                        <div class="product-container">
-                                            <div class="product-left">
-                                                <div class="product-thumb">
-                                                    <a class="product-img" href="#"><img src="{{url()}}/assets/site/data/option3/p24.jpg" alt="Product"></a>
-                                                    <a title="Quick View" href="#" class="btn-quick-view">Quick View</a>
-                                                </div>
-                                            </div>
-                                            <div class="product-right">
-                                                <div class="product-name">
-                                                    <a href="#">Cotton Lycra Leggings</a>
-                                                </div>
-                                                <div class="price-box">
-                                                    <span class="product-price">$139.98</span>
-                                                    <span class="product-price-old">$169.00</span>
-                                                </div>
-                                                <div class="product-button">
-                                                    <a class="btn-add-wishlist" title="Add to Wishlist" href="#">Add Wishlist</a>
-                                                    <a class="btn-add-comparre" title="Add to Compare" href="#">Add Compare</a>
-                                                    <a class="button-radius btn-add-cart" title="Add to Cart" href="#">Buy<span class="icon"></span></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
+                                </div>
+                                        @endforeach
                         </div>
                     </div>
                     <div class="block-footer">

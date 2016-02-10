@@ -17,7 +17,7 @@ class SubCategory extends Migration
             $table->string('title_geo');
             $table->string('title_eng');
             $table->string('title_rus');
-            $table->integer('category_id')->unsigned()->nullable;
+            $table->integer('category_id')->unsigned()->nullable();
             $table->foreign('category_id')->references('id')->on('category')->onDelete('cascade');
             $table->timestamps();
         });

@@ -15,8 +15,6 @@ class ItemColors extends Migration
         Schema::create('item_colors', function (Blueprint $table) {
             $table->increments('id');
             $table->string('color');
-            $table->integer('item_id')->unsigned()->nullable;
-            $table->foreign('item_id')->references('id')->on('album')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -69,17 +69,9 @@ class SiteController extends Controller
         $data['partner'] = Partner::orderBy('created_at', 'asc')->get();
         $data['category'] = Category::with('SubCategory')->orderBy('created_at', 'asc')->get();
         $category = $data['category'] = Category::with('SubCategory')->orderBy('created_at', 'asc')->get();
-        foreach($category as $c)
-        {
-            $data['category'.$c->id] = Items::where('category_id',$c->id)->orderBy('created_at', 'asc')->get();
-        }
-        foreach($category as $c)
-        {
-            $data['categoryfor'] = '$cateogry'.$c->id;
-        }
-
-        $data['itemshot'] = Items::where('spec','2')->orderBy('created_at', 'asc')->get();
-        $data['onlyur'] = Items::where('spec','1')->get();
+         $data['itemcar'] = Items::orderBy('category_id','asc')->get();
+        $data['itemshot'] = Items::where('spec','like','%1%')->orderBy('created_at', 'asc')->get();
+        $data['onlyur'] = Items::where('spec','%0%')->get();
         $data['news'] = News::orderBy('created_at', 'asc')->take(3)->skip(0)->get();
         $data['staff'] = Staff::orderBy('created_at', 'asc')->take(4)->skip(0)->get();
         return view('site.index',$data);

@@ -18,8 +18,8 @@
         <li class="{{Request::segment(2) == 'library' ? 'active' : ''}}">
             <a href="{{route('admin.library.show')}}"><i class="fa fa-fw fa-book"></i> ბიბლიოთეკა</a>
         </li>
-        <li class="{{Request::segment(2) == 'staff' ? 'active' : ''}}">
-            <a href="{{route('admin.staff.show')}}"><i class="fa fa-fw fa-users"></i> თანამშრომლები</a>
+        <li class="{{Request::segment(2) == 'color' ? 'active' : ''}}">
+            <a href="{{route('admin.color.show')}}"><i class="fa fa-fw fa-users"></i> ფერები</a>
         </li>
         <li class="{{Request::segment(2) == 'partner' ? 'active' : ''}}">
             <a href="{{route('admin.partner.show')}}"><i class="fa fa-fw fa-globe"></i> პარტნიორები</a>

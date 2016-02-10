@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Items extends Model
 {
     protected $table = 'items';
-    protected $fillable = array('title_geo','title_eng','title_rus','content_geo','content_eng','content_rus','category_id','slug','main_image','big_image','images[]','price','subcategory_id');
+    protected $fillable = array('title_geo','title_eng','title_rus','content_geo','content_eng','content_rus','category_id','slug','main_image','big_image','images[]','price','subcategory_id','color_id','size_id');
 
     public function Category()
     {
@@ -22,11 +22,11 @@ class Items extends Model
     {
         return $this->hasMany('App/ItemPhotos', 'item_id', 'id');
     }
-    public function Colors()
+    public function ItemColors()
     {
         return $this->hasMany('App/ItemColors', 'item_id', 'id');
     }
-    public function Size()
+    public function ItemSize()
     {
         return $this->hasMany('App/ItemSize', 'item_id', 'id');
     }

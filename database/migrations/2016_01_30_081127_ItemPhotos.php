@@ -15,9 +15,7 @@ class ItemPhotos extends Migration
         Schema::create('item_photos', function (Blueprint $table) {
         $table->increments('id');
         $table->string('photo');
-        $table->integer('item_id')->unsigned()->nullable();
-        $table->foreign('item_id')->references('id')->on('Items')->onDelete('cascade');
-        $table->timestamps();
+            $table->timestamps();
     });
     }
 

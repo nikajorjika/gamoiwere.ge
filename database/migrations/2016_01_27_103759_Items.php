@@ -26,10 +26,19 @@ class Items extends Migration
             $table->integer('price');
             $table->string('spec');
             $table->string('slug');
+
             $table->integer('category_id')->unsigned()->nullable();
             $table->foreign('category_id')->references('id')->on('category')->onDelete('cascade');
+
             $table->integer('subcategory_id')->unsigned()->nullable();
             $table->foreign('subcategory_id')->references('id')->on('subcategory')->onDelete('cascade');
+
+            $table->integer('color_id')->unsigned()->nullable();
+            $table->foreign('color_id')->references('id')->on('item_colors')->onDelete('cascade');
+
+            $table->integer('size_id')->unsigned()->nullable();
+            $table->foreign('size_id')->references('id')->on('item_size')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

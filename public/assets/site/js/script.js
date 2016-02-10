@@ -290,4 +290,7 @@
             $('.scroll_top').stop(false,true).fadeIn(600);
         }
     });
+
+    $('.items').first().addClass('active');
+    $('.items-title').first().addClass('active');
 })(jQuery); // End of use strict
