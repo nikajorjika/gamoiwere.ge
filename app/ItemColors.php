@@ -9,8 +9,8 @@ class ItemColors extends Model
     protected $table = 'item_colors';
     protected $fillable = array('color','item_id');
 
-    public function Items()
+    public function items()
     {
-        return $this->belongsTo('App/Items', 'item_id', 'id');
+        return $this->belongsToMany('App/Items', 'item_item_color');
     }
 }

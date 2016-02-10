@@ -9,8 +9,8 @@ class ItemSize extends Model
     protected $table = 'item_size';
     protected $fillable = array('size','item_id');
 
-    public function Items()
+    public function items()
     {
-        return $this->belongsTo('App/Items', 'item_id', 'id');
+        return $this->belongsToMany('App/Items', 'item_item_color');
     }
 }

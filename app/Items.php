@@ -15,7 +15,7 @@ class Items extends Model
     }
     public function SubCategory()
     {
-        return $this->belongsTo('App/SubCategory', 'category_id', 'id');
+        return $this->belongsToMany('App/SubCategory', 'item_subcategory');
     }
 
     public function ItemPhotos()
@@ -24,10 +24,10 @@ class Items extends Model
     }
     public function ItemColors()
     {
-        return $this->hasMany('App/ItemColors', 'item_id', 'id');
+        return $this->belongsToMany('App/ItemColors','item_item_color');
     }
     public function ItemSize()
     {
-        return $this->hasMany('App/ItemSize', 'item_id', 'id');
+        return $this->belongsToMany('App/ItemSize', 'item_item_size');
     }
 }
