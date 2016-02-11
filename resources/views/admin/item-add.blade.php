@@ -88,7 +88,7 @@
                         @endforeach
                         </div>
                         <div class="form-group">
-                            <h3>აირჩიე ფერი</h3>
+                            <h3>აირჩიე ზომა:</h3>
                             @foreach($size as $s)
                             {!! Form::checkbox('color[]', $s->id) !!}
                             {!! Form::label('color',"$s->size") !!}
