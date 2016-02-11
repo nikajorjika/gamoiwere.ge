@@ -13,4 +13,8 @@ class SubCategory extends Model
     {
         return $this->belongsTo('App/Category', 'category_id', 'id');
     }
+    public function items()
+    {
+        return $this->belongsToMany('App/Items', 'item_item_color');
+    }
 }

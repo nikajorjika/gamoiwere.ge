@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Redirect;
 
 class ItemSize extends Controller
 {
@@ -16,7 +17,8 @@ class ItemSize extends Controller
      */
     public function index()
     {
-        //
+        $data['size'] = \App\ItemSize::orderBy('id','asc')->get();
+        return view('admin.size', $data);
     }
 
     /**
@@ -37,7 +39,11 @@ class ItemSize extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $color = new \App\ItemSize();
+        $color->fill($request->all());
+        $color->save();
+        return Redirect::back();
     }
 
     /**
@@ -82,6 +88,7 @@ class ItemSize extends Controller
      */
     public function destroy($id)
     {
-        //
+        \App\ItemSize::destroy($id);
+        return Redirect::back();
     }
 }

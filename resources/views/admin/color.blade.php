@@ -44,7 +44,7 @@
                         @foreach($color as $a)
                             <tr>
                                 <td>{{$a->id}}</td>
-                                <td style="background: {{$a->color}}};"></td>
+                                <td style="background: {{$a->color}};"></td>
                                 <td>
                                     <a id="delete" href="{{route('admin.color.delete',$a->id)}}">
                                         <button class="btn btn-danger" style="width: 100%">წაშლა</button>

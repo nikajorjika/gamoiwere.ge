@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ItemColors extends Migration
+class ItemPhotos extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,11 @@ class ItemColors extends Migration
      */
     public function up()
     {
-        Schema::create('item_colors', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('color');
+        Schema::create('item_photos', function (Blueprint $table) {
+            $table->increments('id')->unsigned();
+            $table->string('photo');
             $table->timestamps();
-        });
+    });
     }
 
     /**
@@ -26,6 +26,6 @@ class ItemColors extends Migration
      */
     public function down()
     {
-        Schema::drop('item_colors');
+        Schema::drop('item_photos');
     }
 }

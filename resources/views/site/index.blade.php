@@ -349,7 +349,7 @@
                 <div class="block3 block-hotdeals">
                     <div class="block-head">
                         <h3 class="block-title">ცხელი შემოთავაზება</h3>
-                        <a class="link-all" href="#">მაჩვენე ყველა</a>
+                        <a class="link-all" href="{{url()}}/hot">მაჩვენე ყველა</a>
                     </div>
                     <div class="block-inner">
                         <ul class="products kt-owl-carousel" data-margin="20" data-loop="true" data-nav="true" data-responsive='{"0":{"items":1},"600":{"items":3},"768":{"items":2},"1000":{"items":3},"1200":{"items":4}}'>
@@ -373,9 +373,6 @@
                                                 <a class="btn-add-wishlist" title="Add to Wishlist" href="#">დაამატე კალათაში</a>
                                                 <a class="button-radius btn-add-cart" title="Add to Cart" href="#">შეძენა<span class="icon"></span></a>
                                             </div>
-                                        </div>
-                                        <div class="product-count-down">
-                                            <span class="countdown-lastest" data-y="2016" data-m="10" data-d="1" data-h="00" data-i="00" data-s="00"></span>
                                         </div>
                                     </div>
                                 </li>

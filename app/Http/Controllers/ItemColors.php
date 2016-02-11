@@ -87,6 +87,7 @@ class ItemColors extends Controller
      */
     public function destroy($id)
     {
-        //
+        \App\ItemColors::destroy($id);
+        return Redirect::back();
     }
 }

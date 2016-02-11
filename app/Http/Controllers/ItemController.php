@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\ItemColors;
 use App\ItemPhotos;
 use App\Items;
+use App\ItemSize;
 use Helpers\Helpers;
 use Illuminate\Http\Request;
 
@@ -34,6 +36,8 @@ class ItemController extends Controller
     public function create()
     {
         $data['category'] = Category::with('SubCategory')->orderby('created_at','asc')->get();
+        $data['color'] = ItemColors::orderby('created_at','asc')->get();
+        $data['size'] = ItemSize::orderby('created_at','asc')->get();
         return view('admin.item-add',$data);
     }
 
@@ -66,6 +70,7 @@ class ItemController extends Controller
         }
         $item->main_image = $fileName;
 
+
         $big_image = $request->file('big_image');
         $fileNameBig = "";
         if($big_image->isValid()){
@@ -78,7 +83,19 @@ class ItemController extends Controller
         $item->main_image = $fileName;
         $item->big_image = $fileNameBig;
         $item->save();
+
+        foreach($request->file('images') as $p){
+            $fileName = "";
+            if($p->isValid()){
+                $path = public_path().'/uploads/photos/'.$item->id.'/';
+                $fileName = str_random(32).'.'.$p->getClientOriginalExtension();
+                $p->move($path, $fileName);
+            }else{
+                App::abort(404);
+            }
+        }
         return Redirect::route('admin.item.show');
+
     }
 
     /**

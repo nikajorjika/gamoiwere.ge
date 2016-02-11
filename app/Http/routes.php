@@ -240,6 +240,27 @@ Route::group(['prefix' => 'admin'], function () {
         ])->where('id', '[0-9]+');
 
     });
+    Route::group(['prefix' => 'size'], function () {
+
+        Route::get('/', [
+            'middleware' => 'auth',
+            'uses' => 'ItemSize@index',
+            'as' => 'admin.size.show',
+        ]);
+
+        Route::post('/', [
+            'middleware' => 'auth',
+            'uses' => 'ItemSize@store',
+        ]);
+
+
+        Route::get('delete/{id}', [
+            'middleware' => 'auth',
+            'uses' => 'ItemSize@destroy',
+            'as' => 'admin.size.delete',
+        ])->where('id', '[0-9]+');
+
+    });
     Route::group(['prefix' => 'item'], function () {
 
         Route::get('/', [

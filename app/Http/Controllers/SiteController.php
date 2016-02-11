@@ -22,6 +22,7 @@ use App\Page;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
+use Symfony\Component\Finder\Iterator\FilePathsIterator;
 
 class SiteController extends Controller
 {
@@ -49,10 +50,16 @@ class SiteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function showItemDetail($slug, $id){
-
         $data['item'] = Items::findOrFail($id);
         $item = Items::findOrFail($id);
-        $data['itemphotos'] = ItemPhotos::where('item_id',$item->id)->get();
+        if(is_dir( public_path().'/uploads/photos/'.$id.'/')){
+            $photos  = scandir(public_path().'/uploads/photos/'.$id.'/',1);
+            $files = array_diff($photos, array('.', '..'));
+        }else{
+            $files = [];
+        }
+        $data['item_id'] = $id;
+        $data['itemphotos'] = $files;
         $data['partner'] = Partner::orderBy('created_at', 'asc')->get();
         $data['category'] = Category::with('SubCategory')->orderBy('created_at', 'asc')->get();
         $data['topseller'] = Items::where('category_id','1')->get();
@@ -71,7 +78,7 @@ class SiteController extends Controller
         $category = $data['category'] = Category::with('SubCategory')->orderBy('created_at', 'asc')->get();
          $data['itemcar'] = Items::orderBy('category_id','asc')->get();
         $data['itemshot'] = Items::where('spec','like','%1%')->orderBy('created_at', 'asc')->get();
-        $data['onlyur'] = Items::where('spec','%0%')->get();
+        $data['onlyur'] = Items::where('spec','like','%0%')->get();
         $data['news'] = News::orderBy('created_at', 'asc')->take(3)->skip(0)->get();
         $data['staff'] = Staff::orderBy('created_at', 'asc')->take(4)->skip(0)->get();
         return view('site.index',$data);

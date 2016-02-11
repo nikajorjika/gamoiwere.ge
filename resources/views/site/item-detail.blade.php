@@ -27,8 +27,8 @@
                         <ul class="thumbnails kt-owl-carousel" data-margin="10" data-nav="true" data-responsive='{"0":{"items":2},"600":{"items":2},"1000":{"items":3}}'>
                            @foreach($itemphotos as $ip)
                             <li>
-                                <a href="{{url()}}/uploads/itemphotos/{{$ip->photo}}" data-standard="{{url()}}/uploads/itemphotos/{{$ip->photo}}">
-                                    <img src="{{url()}}/uploads/itemphotos/{{$ip->photo}}" alt="{{$item->title_geo}}" />
+                                <a href="{{url()}}/uploads/photos/{{$item_id}}/{{$ip}}" data-standard="{{url()}}/uploads/photos/{{$item_id}}/{{$ip}}">
+                                    <img src="{{url()}}/uploads/photos/{{$item_id}}/{{$ip}}" alt="{{$item->title_geo}}" />
                                 </a>
                             </li>
                             @endforeach

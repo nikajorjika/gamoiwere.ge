@@ -21,6 +21,9 @@
         <li class="{{Request::segment(2) == 'color' ? 'active' : ''}}">
             <a href="{{route('admin.color.show')}}"><i class="fa fa-fw fa-users"></i> ფერები</a>
         </li>
+        <li class="{{Request::segment(2) == 'size' ? 'active' : ''}}">
+            <a href="{{route('admin.size.show')}}"><i class="fa fa-fw fa-users"></i> ზომები</a>
+        </li>
         <li class="{{Request::segment(2) == 'partner' ? 'active' : ''}}">
             <a href="{{route('admin.partner.show')}}"><i class="fa fa-fw fa-globe"></i> პარტნიორები</a>
         </li>
