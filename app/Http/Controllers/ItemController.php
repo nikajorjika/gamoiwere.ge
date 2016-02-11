@@ -83,7 +83,8 @@ class ItemController extends Controller
         $item->main_image = $fileName;
         $item->big_image = $fileNameBig;
         $item->save();
-
+        $item->ItemColors()->sync($request->color);
+        $item->ItemSize()->sync($request->size);
         foreach($request->file('images') as $p){
             $fileName = "";
             if($p->isValid()){

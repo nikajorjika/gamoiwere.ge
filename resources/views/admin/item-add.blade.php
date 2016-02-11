@@ -83,16 +83,16 @@
                         <div class="form-group">
                             <h3>აირჩიე ფერი</h3>
                             @foreach($color as $c)
-                            {!! Form::checkbox('color[]', $c->id) !!}
-                            {!! Form::label('color','',['class'=> 'color_admin',"style"=>"background: $c->color; "]) !!}
-                        @endforeach
+                                {!! Form::checkbox('color[]', $c->id) !!}
+                                {!! Form::label('color','',['class'=> 'color_admin',"style"=>"background: $c->color; "]) !!}
+                            @endforeach
                         </div>
                         <div class="form-group">
                             <h3>აირჩიე ზომა:</h3>
                             @foreach($size as $s)
-                            {!! Form::checkbox('color[]', $s->id) !!}
-                            {!! Form::label('color',"$s->size") !!}
-                        @endforeach
+                                {!! Form::checkbox('size[]', $s->id) !!}
+                                {!! Form::label('size',"$s->size") !!}
+                            @endforeach
                         </div>
                         <div class="form-group">
                             <label for="price">ფასი:</label>

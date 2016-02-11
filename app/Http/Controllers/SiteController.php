@@ -60,6 +60,8 @@ class SiteController extends Controller
         }
         $data['item_id'] = $id;
         $data['itemphotos'] = $files;
+        $data['colors'] = Items::find($id)->ItemColors()->get();
+        $data['sizes'] = Items::find($id)->ItemSize()->get();
         $data['partner'] = Partner::orderBy('created_at', 'asc')->get();
         $data['category'] = Category::with('SubCategory')->orderBy('created_at', 'asc')->get();
         $data['topseller'] = Items::where('category_id','1')->get();

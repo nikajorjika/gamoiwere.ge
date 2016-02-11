@@ -51,11 +51,9 @@
                                         <td class="table-label"> ფერი</td>
                                         <td class="table-value">
                                             <ul class="list-check-box color">
-                                                <li><a class="selected" href="#"><span style="background:#4d6dbd;">Blue</span></a></li>
-                                                <li><a href="#"><span style="background:#fb5d5d;">Blue</span></a></li>
-                                                <li><a href="#"><span style="background:#2fbcda;">Blue</span></a></li>
-                                                <li><a href="#"><span style="background:#ffe00c;">Blue</span></a></li>
-                                                <li><a href="#"><span style="background:#72b226;">Blue</span></a></li>
+                                                @foreach($colors as $color)
+                                                    <li><a class="" href="#"><span style="background:{{$color->color}};">Blue</span></a></li>
+                                                @endforeach
                                             </ul>
                                         </td>
                                     </tr>
@@ -63,10 +61,9 @@
                                         <td class="table-label"> ზომა</td>
                                         <td class="table-value">
                                             <ul class="list-check-box">
-                                                <li><a href="#">XL</a></li>
-                                                <li><a href="#">X</a></li>
-                                                <li><a href="#">S</a></li>
-                                                <li><a href="#">XS</a></li>
+                                                @foreach($sizes as $size)
+                                                    <li><a href="#">{{$size->size}}</a></li>
+                                                @endforeach
                                             </ul>
                                         </td>
                                     </tr>

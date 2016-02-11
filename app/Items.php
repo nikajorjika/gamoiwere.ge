@@ -24,10 +24,10 @@ class Items extends Model
     }
     public function ItemColors()
     {
-        return $this->belongsToMany('App/ItemColors','item_item_color');
+        return $this->belongsToMany('App\ItemColors','item_item_color');
     }
     public function ItemSize()
     {
-        return $this->belongsToMany('App/ItemSize', 'item_item_size');
+        return $this->belongsToMany('App\ItemSize', 'item_item_size');
     }
 }

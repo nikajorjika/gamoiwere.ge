@@ -58,7 +58,7 @@ return [
             'unix_socket'   => '/Applications/MAMP/tmp/mysql/mysql.sock',
             'database'  => 'gamoiwere',
             'username'  => 'root',
-            'password'  => 'root',
+            'password'  => '',
             'charset'   => 'utf8',
             'collation' => 'utf8_general_ci',
             'prefix'    => '',

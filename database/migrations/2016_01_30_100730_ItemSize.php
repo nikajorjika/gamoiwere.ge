@@ -18,20 +18,20 @@ class ItemSize extends Migration
             $table->timestamps();
         });
         Schema::create('item_item_color', function (Blueprint $table) {
-            $table->integer('item_id')->unsigned();
-            $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
-            $table->integer('color_id')->unsigned();
-            $table->foreign('color_id')->references('id')->on('item_colors')->onDelete('cascade');
+            $table->integer('items_id')->unsigned();
+            $table->foreign('items_id')->references('id')->on('items')->onDelete('cascade');
+            $table->integer('item_colors_id')->unsigned();
+            $table->foreign('item_colors_color_id')->references('id')->on('item_colors')->onDelete('cascade');
         });
         Schema::create('item_item_size', function (Blueprint $table) {
-            $table->integer('item_id')->unsigned();
-            $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
-            $table->integer('size_id')->unsigned();
-            $table->foreign('size_id')->references('id')->on('item_size')->onDelete('cascade');
+            $table->integer('items_id')->unsigned();
+            $table->foreign('items_id')->references('id')->on('items')->onDelete('cascade');
+            $table->integer('item_size_id')->unsigned();
+            $table->foreign('item_size_id')->references('id')->on('item_size')->onDelete('cascade');
         });
         Schema::create('item_subcategory', function (Blueprint $table) {
-            $table->integer('item_id')->unsigned();
-            $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
+            $table->integer('items_id')->unsigned();
+            $table->foreign('items_id')->references('id')->on('items')->onDelete('cascade');
             $table->integer('subcategory_id')->unsigned();
             $table->foreign('subcategory_id')->references('id')->on('subcategory')->onDelete('cascade');
         });
