@@ -2,16 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\BankCard;
-use App\Category;
-use App\Users;
-use App\Partner;
 use Illuminate\Http\Request;
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
 
-class UserController extends Controller
+class BankCardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,24 +37,9 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $user = new Users();
-        $user->fill($request->all());
-        $user->password = Hash::make($request->input('password'));
-        $user->save();
-        $data['partner'] = Partner::orderBy('created_at', 'asc')->get();
-        $data['category'] = Category::with('SubCategory')->orderBy('created_at', 'asc')->get();
-        return view('site.success',$data);
+        //
     }
 
-
-    public function AddCard(Request $request)
-    {
-        $card = new BankCard();
-        $card= fill($request->all());
-        $card->save();
-        $user = Users::findOrFail($request->user_id);
-        dd($request->name);
-    }
     /**
      * Display the specified resource.
      *

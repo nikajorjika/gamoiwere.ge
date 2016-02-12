@@ -57,13 +57,17 @@
                         <div class="wrap-block-cl">
                             <div class="inner-cl box-radius">
                                 <div class="dropdown user-info">
+
+                                    @if(!Auth::user()->check())
+                                    @else
                                     <a data-toggle="dropdown" role="button"><i class="fa fa-user"></i></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="#"><i class="fa fa-user"></i> My account</a></li>
-                                        <li><a href="#"><i class="fa fa-heart-o"></i> My Widshlist</a></li>
-                                        <li><a href="#"><i class="fa fa-arrow-circle-right"></i> Checkout</a></li>
-                                        <li><a href="#"><i class="fa fa-sign-in"></i> Login</a></li>
+
+                                        <li><a href="{{url()}}/account"><i class="fa fa-user"></i> ჩემი კაბინეტი</a></li>
+                                        <li><a href="{{url()}}/checkout"><i class="fa fa-arrow-circle-right"></i> შეძენა</a></li>
+                                        <li><a href="{{route('site.log.out')}}"><i class="fa fa-sign-in"></i> გამოსვლა</a></li>
                                     </ul>
+                                    @endif
                                 </div>
                                 @if(!Auth::user()->check())
                                 <div class="currency">
@@ -75,7 +79,7 @@
                             </div>
                                     @else
                                     <div class="currency">
-                                        <a href="{{route('site.login.show')}}">{{Auth::user()->user()->email}}</a>
+                                        <a  href="{{url()}}/account">{{Auth::user()->user()->email}}</a>
                                     </div>
                                     @endif
                             </div>
@@ -152,7 +156,7 @@
                                 </div>
                                 <div id="navbar" class="navbar-collapse collapse">
                                     <ul class="nav navbar-nav">
-                                        <li class="active"><a href="{{url()}}">მთავარი</a></li>
+                                        <li><a href="{{url()}}">მთავარი</a></li>
                                         <li><a href="{{route('site.news.show')}}">სიახლეები</a></li>
                                         <li><a href="{{route('site.contact.show')}}">კონტაქტი</a></li>
                                         <li><a href="{{route('site.about.show')}}">ჩვენს შესახებ</a></li>

@@ -20,12 +20,26 @@ Route::get('login', [
     'as' => 'site.login.show',
 ]);
 
-Route::get('addtocart/{slug}/{id}', [
-    'uses' => 'SiteController@AddToCart',
-    'as'   => 'site.addto.cart',
-])->where('id', '[0-9]+');
-
 Route::post('login', ['uses' => 'SiteController@checkLogin']);
+Route::get('logout', [
+    'uses' => 'SiteController@logout',
+    'as' => 'site.log.out'
+    ]);
+Route::get('account', [
+    'uses' => 'SiteController@ShowAccount',
+    'as' => 'site.account.show',
+]);
+Route::get('checkout', [
+    'uses' => 'SiteController@ShowCheckOut',
+    'as' => 'site.checkout.show',
+]);
+Route::get('hot', [
+    'uses' => 'SiteController@ShowHotItems',
+    'as' => 'site.hot.show',
+]);
+
+Route::post('account', ['uses' => 'UserController@AddCard']);
+
 Route::get('registration', [
     'uses' => 'SiteController@ShowRegistration',
     'as' => 'site.registration.show',

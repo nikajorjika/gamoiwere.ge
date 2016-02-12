@@ -172,11 +172,20 @@ class SiteController extends Controller
         $data['sideslider'] = SideSlider::orderBy('created_at', 'asc')->get();
         $data['partner'] = Partner::orderBy('created_at', 'asc')->get();
         $data['category'] = Category::with('SubCategory')->orderBy('created_at', 'asc')->get();
-
         $data['categoryex'] = Category::findOrFail($id);
         $data['categoryex'] = Category::with('SubCategory')->findOrFail($id);
         $data['item'] = Items::where('category_id', $id)->orderBy('created_at', 'asc')->paginate(12);
         return view('site.category-item-list',$data);
+
+    }
+    public function ShowHotItems()
+    {
+        $data['slider'] = Slide::orderBy('created_at', 'asc')->get();
+        $data['sideslider'] = SideSlider::orderBy('created_at', 'asc')->get();
+        $data['partner'] = Partner::orderBy('created_at', 'asc')->get();
+        $data['category'] = Category::with('SubCategory')->orderBy('created_at', 'asc')->get();
+        $data['item'] = Items::where('spec','like', '%1%')->orderBy('created_at', 'asc')->paginate(12);
+        return view('site.hot',$data);
 
     }
     public function ShowSubCategoryItems($id)
@@ -204,6 +213,33 @@ class SiteController extends Controller
         $data['partner'] = Partner::orderBy('created_at', 'asc')->get();
         return view('site.login',$data);
 
+    }
+    public function ShowAccount()
+    {
+        if(!Auth::user()->check()){
+            return Redirect::route('site.login.show');
+        }
+
+        $data['partner'] = Partner::orderBy('created_at', 'asc')->get();
+        $data['category'] = Category::with('SubCategory')->orderBy('created_at', 'asc')->get();
+        $data['user'] = Auth::user()->user();
+        return view('site.account',$data);
+    }
+    public function ShowCheckOut()
+    {
+        if(!Auth::user()->check()){
+            return Redirect::route('site.login.show');
+        }
+
+        $data['partner'] = Partner::orderBy('created_at', 'asc')->get();
+        $data['category'] = Category::with('SubCategory')->orderBy('created_at', 'asc')->get();
+        $data['user'] = Auth::user()->user();
+        return view('site.checkout',$data);
+    }
+    public function logout()
+    {
+        Auth::user()->logout();
+        return Redirect::route('site.index');
     }
     public function ShowTeam()
     {
