@@ -11,6 +11,7 @@ use App\Comment;
 use App\Library;
 use App\Photo;
 use App\SideSlider;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -85,6 +86,17 @@ class SiteController extends Controller
         $data['staff'] = Staff::orderBy('created_at', 'asc')->take(4)->skip(0)->get();
         return view('site.index',$data);
 
+    }
+    public function AddToCart($id, $slug)
+    {
+        Cart::associate('Items')->add('293ad', 'Product 1', 1, 9.99, array('size' => 'large'));
+        $content = Cart::get('293ad');
+
+            dd($content);
+        foreach($content as $row)
+        {
+            echo 'You have ' . $row->qty . ' items of ' . $row->product->name . ' with description: "' . $row->product->description . '" in your cart.';
+        }
     }
     public function ShowContact()
     {

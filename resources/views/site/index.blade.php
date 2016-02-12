@@ -316,7 +316,7 @@
                                                         <span class="product-price">{{$i->price}} <span class="lari">b</span></span>
                                                     </div>
                                                     <div class="product-button">
-                                                        <a class="btn-add-wishlist" title="დაამატე კალათაში" href="#">დაამატე კალათაში</a>
+                                                        <a class="btn-add-wishlist" title="დაამატე კალათაში" href="{{url()}}/addtocart/{{$i->slug}}/{{$i->id}}">დაამატე კალათაში</a>
                                                         <a class="button-radius btn-add-cart" title="Add to Cart" href="#">ყიდვა<span class="icon"></span></a>
                                                     </div>
                                                 </div>
@@ -358,8 +358,8 @@
                                     <div class="product-container">
                                         <div class="product-left">
                                             <div class="product-thumb">
-                                                <a class="product-img" href="{{url()}}/item/item/{{$i->slug}}/{{$i->id}}"><img src="{{url()}}/uploads/item/{{$i->main_image}}" alt="{{$i->title_geo}}"></a>
-                                                <a title="Quick View" href="{{url()}}/item/item/{{$i->slug}}/{{$i->id}}" class="btn-quick-view">ნახვა</a>
+                                                <a class="product-img" href="{{url()}}/item/{{$i->slug}}/{{$i->id}}"><img src="{{url()}}/uploads/item/{{$i->main_image}}" alt="{{$i->title_geo}}"></a>
+                                                <a title="Quick View" href="{{url()}}/item/{{$i->slug}}/{{$i->id}}" class="btn-quick-view">ნახვა</a>
                                             </div>
                                         </div>
                                         <div class="product-right">
@@ -370,7 +370,7 @@
                                                 <span class="product-price">{{$i->price}}</span>
                                             </div>
                                             <div class="product-button">
-                                                <a class="btn-add-wishlist" title="Add to Wishlist" href="#">დაამატე კალათაში</a>
+                                                <a class="btn-add-wishlist" title="Add to Wishlist" href="{{url()}}/addtocart/{{$i->slug}}/{{$i->id}}">დაამატე კალათაში</a>
                                                 <a class="button-radius btn-add-cart" title="Add to Cart" href="#">შეძენა<span class="icon"></span></a>
                                             </div>
                                         </div>
@@ -382,12 +382,12 @@
                 </div>
                 <!-- Hot deals -->
                 <!-- group banner -->
-                <div class="group-banner3 banner-hover">
-                    <a class="banner banner1" href="#"><img src="{{url()}}/assets/site/data/option3/images01.png" alt="Banner"></a>
-                    <a class="banner banner2" href="#"><img src="{{url()}}/assets/site/data/option3/images02.png" alt="Banner"></a>
-                    <a class="banner banner3" href="#"><img src="{{url()}}/assets/site/data/option3/images03.png" alt="Banner"></a>
-                    <a class="banner banner4" href="#"><img src="{{url()}}/assets/site/data/option3/images04.png" alt="Banner"></a>
-                </div>
+                {{--<div class="group-banner3 banner-hover">--}}
+                    {{--<a class="banner banner1" href="#"><img src="{{url()}}/assets/site/data/option3/images01.png" alt="Banner"></a>--}}
+                    {{--<a class="banner banner2" href="#"><img src="{{url()}}/assets/site/data/option3/images02.png" alt="Banner"></a>--}}
+                    {{--<a class="banner banner3" href="#"><img src="{{url()}}/assets/site/data/option3/images03.png" alt="Banner"></a>--}}
+                    {{--<a class="banner banner4" href="#"><img src="{{url()}}/assets/site/data/option3/images04.png" alt="Banner"></a>--}}
+                {{--</div>--}}
                 <!-- ./group banner -->
                 <div class="block3 tab-cat-products">
                     <div class="block-head">

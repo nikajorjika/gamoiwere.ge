@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Redirect;
 
@@ -118,9 +119,18 @@ class ItemController extends Controller
      */
     public function edit($id)
     {
-        $obj = Items::findOrFail($id);
+        $data['item'] = Items::findOrFail($id);
         $data['category'] = Category::with('SubCategory')->orderby('created_at','asc')->get();
-        return view('admin.item-add',$data)->with('obj', $obj);
+        $data['color'] =ItemColors::all();
+        $data['size'] = ItemSize::all();
+        if(is_dir( public_path().'/uploads/photos/'.$id.'/')){
+            $photos  = scandir(public_path().'/uploads/photos/'.$id.'/',1);
+            $files = array_diff($photos, array('.', '..'));
+        }else{
+            $files = [];
+        }
+        $data['photos'] = $files;
+        return view('admin.item-add',$data)->with('obj', $data);
     }
 
     /**
@@ -146,7 +156,7 @@ class ItemController extends Controller
 
         if(NULL !== ($request->file('main_image'))) {
             File::delete(public_path() . '/uploads/item/' . $item->main_image);
-            $image = $request->file('image');
+            $image = $request->file('main_image');
             $fileName = "";
             if ($image->isValid()) {
                 $path = public_path() . '/uploads/item/';
@@ -155,22 +165,17 @@ class ItemController extends Controller
             }
             $item->main_image = $fileName;
         }
-
+        $item->save();
         foreach($request->file('images') as $p){
-            $photo = new ItemPhotos();
-            $photo->item_id = $item->id;
             $fileName = "";
             if($p->isValid()){
-                $path = public_path().'/uploads/itemphotos/';
+                $path = public_path().'/uploads/photos/'.$item->id.'/';
                 $fileName = str_random(32).'.'.$p->getClientOriginalExtension();
                 $p->move($path, $fileName);
             }else{
                 App::abort(404);
             }
-            $photo->photo = $fileName;
-            $photo->save();
         }
-        $item->save();
         return Redirect::route('admin.item.show');
     }
 
@@ -190,5 +195,17 @@ class ItemController extends Controller
             App::abort(404);
         }
         return Redirect::route('admin.item.show');
+    }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  string  $name
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function delete_photo($id, $name)
+    {
+        File::delete(public_path().'/uploads/photos/'.$id.'/'.$name);
+        return Redirect::back();
     }
 }

@@ -139,6 +139,8 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         'Collective\Html\HtmlServiceProvider',
+        'Gloudemans\Shoppingcart\ShoppingcartServiceProvider',
+
 
         /*
          * Application Service Providers...
@@ -198,6 +200,7 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
         'Form' => 'Collective\Html\FormFacade',
         'Html' => 'Collective\Html\HtmlFacade',
+        'Cart' => 'Gloudemans\Shoppingcart\Facades\Cart',
 
     ],
 

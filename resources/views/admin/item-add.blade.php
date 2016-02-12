@@ -24,21 +24,36 @@
                     <li><a data-toggle="tab" href="#eng">ENG</a></li>
                     <li><a data-toggle="tab" href="#rus">RUS</a></li>
                 </ul>
-                @if(!empty($obj))
-                    {!! Form::model($obj,['method' => 'post', 'files' => true]) !!}
+                @if(!empty($item))
+                    {!! Form::model($item,['method' => 'post', 'files' => true]) !!}
                 @else
                     {!! Form::open(['method' => 'post', 'files' => true]) !!}
                 @endif
                 {{csrf_field()}}
 
-                @if(!empty($obj))
+                @if(!empty($item))
                     <div class="form-group"><br/>
                         <div class="row">
                             <div class="col-xs-6 col-md-3">
-                                <a href="{{url()}}/uploads/item/{{$obj->main_image}}" class="thumbnail">
-                                    <img src="{{url()}}/uploads/item/{{$obj->main_image}}">
+                                <a href="{{url()}}/uploads/item/{{$item->main_image}}" class="thumbnail">
+                                    <img src="{{url()}}/uploads/item/{{$item->main_image}}">
                                 </a>
                             </div>
+                        </div>
+                    </div>
+                @endif
+                @if(!empty($photos))
+                    <div class="form-group"><br/>
+                        <div class="row">
+                            @foreach($photos as $p)
+                            <div class="col-xs-6 col-md-2">
+                                <span class="admin-delete-photo"><a href="{{route('admin.itemphotos.delete',[$item->id,$p])}}"><i class="fa fa-trash-o"></i></a></span>
+                                <a href="{{url()}}/uploads/photos/{{$item->id}}/{{$p}}" class="thumbnail">
+                                    <img src="{{url()}}/uploads/photos/{{$item->id}}/{{$p}}">
+                                </a>
+
+                            </div>
+                                @endforeach
                         </div>
                     </div>
                 @endif

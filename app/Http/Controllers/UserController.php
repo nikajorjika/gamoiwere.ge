@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Users;
 use App\Partner;
 use Illuminate\Http\Request;
@@ -42,9 +43,9 @@ class UserController extends Controller
         $user = new Users();
         $user->fill($request->all());
         $user->password = Hash::make($request->input('password'));
+        $user->save();
         $data['partner'] = Partner::orderBy('created_at', 'asc')->get();
         $data['category'] = Category::with('SubCategory')->orderBy('created_at', 'asc')->get();
-        $user->save();
         return view('site.success',$data);
     }
 

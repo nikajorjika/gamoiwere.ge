@@ -27,9 +27,6 @@
                                 </div>
                                 <div class="post-info">
                                     <h5 class="entry_title"><a href="post.html">{{$s->title_geo}}</a></h5>
-                                    <div class="post-meta">
-                                        <span class="date"> {{$s->created_at}}</span>
-                                    </div>
                                 </div>
                             </li>
                                 @endforeach
@@ -55,12 +52,6 @@
                                             </a>
                                         </div>
                                         <h3 class="entry-title"><a href="{{url()}}/news/{{$n->slug}}/{{$n->id}}">{{$n->title_geo}}</a></h3>
-                                        <div class="entry-meta-data">
-	                                            <span class="author">
-	                                            <i class="fa fa-user"></i>
-	                                             <a href="#">Gamoiwere.ge</a></span>
-                                            <span class="date"><i class="fa fa-calendar"></i> {{$n->created_at}}</span>
-                                        </div>
                                         <div class="entry-excerpt">
                                            {!! $n->content_small_geo !!}
                                         </div>

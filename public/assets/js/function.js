@@ -7,7 +7,6 @@ $('.delete').on('click', function(){
     }
 });
 
-
 // menu drag
 $(document).ready(function()
 {

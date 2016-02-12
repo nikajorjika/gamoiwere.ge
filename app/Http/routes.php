@@ -19,6 +19,12 @@ Route::get('login', [
     'uses' => 'SiteController@ShowLogin',
     'as' => 'site.login.show',
 ]);
+
+Route::get('addtocart/{slug}/{id}', [
+    'uses' => 'SiteController@AddToCart',
+    'as'   => 'site.addto.cart',
+])->where('id', '[0-9]+');
+
 Route::post('login', ['uses' => 'SiteController@checkLogin']);
 Route::get('registration', [
     'uses' => 'SiteController@ShowRegistration',
@@ -87,6 +93,7 @@ Route::get('news/{slug}/{id}', [
     'uses' => 'SiteController@ShowNewsDetail',
     'as'   => 'site.show.news.detail',
 ])->where('id', '[0-9]+');
+
 Route::post('news/{slug}/{id}', [
     'uses' => 'CommentController@store'
 ]);
@@ -262,6 +269,12 @@ Route::group(['prefix' => 'admin'], function () {
 
     });
     Route::group(['prefix' => 'item'], function () {
+
+        Route::get('delete/photo/{id}/{name}', [
+            'middleware' => 'auth',
+            'uses' => 'ItemController@delete_photo',
+            'as' => 'admin.itemphotos.delete',
+        ]);
 
         Route::get('/', [
             'middleware' => 'auth',

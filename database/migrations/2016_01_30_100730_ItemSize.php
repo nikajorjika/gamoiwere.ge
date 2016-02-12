@@ -21,7 +21,7 @@ class ItemSize extends Migration
             $table->integer('items_id')->unsigned();
             $table->foreign('items_id')->references('id')->on('items')->onDelete('cascade');
             $table->integer('item_colors_id')->unsigned();
-            $table->foreign('item_colors_color_id')->references('id')->on('item_colors')->onDelete('cascade');
+            $table->foreign('item_colors_id')->references('id')->on('item_colors')->onDelete('cascade');
         });
         Schema::create('item_item_size', function (Blueprint $table) {
             $table->integer('items_id')->unsigned();

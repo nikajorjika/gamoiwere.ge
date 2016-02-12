@@ -170,6 +170,7 @@
                                                         <h5 class="mini-cart-head">2 Items in my cart</h5>
                                                         <div class="mini-cart-list">
                                                             <ul>
+                                                                {{\Gloudemans\Shoppingcart\Facades\Cart::get(2)}}
                                                                 <li class="product-info">
                                                                     <div class="p-left">
                                                                         <a href="#" class="remove_link"></a>
@@ -178,20 +179,7 @@
                                                                         </a>
                                                                     </div>
                                                                     <div class="p-right">
-                                                                        <p class="p-name">Donec Ac Tempus</p>
-                                                                        <p class="product-price">$139.98</p>
-                                                                        <p>Qty: 1</p>
-                                                                    </div>
-                                                                </li>
-                                                                <li class="product-info">
-                                                                    <div class="p-left">
-                                                                        <a href="#" class="remove_link"></a>
-                                                                        <a href="#">
-                                                                            <img class="img-responsive" src="{{url()}}/assets/site/data/p2.jpg" alt="Product">
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="p-right">
-                                                                        <p class="p-name">Donec Ac Tempus</p>
+                                                                        <p class="p-name">{{$c->title_geo}}</p>
                                                                         <p class="product-price">$139.98</p>
                                                                         <p>Qty: 1</p>
                                                                     </div>

@@ -54,4 +54,27 @@
     height: 20px;
     color: rgba(0,0,0,0);
 }
+.admin-delete-photo
+{
+    position: absolute;
+    left:50%;
+    top: 50%;
+    font-size: 69px;
+    color: #e74c3c;
+    cursor: pointer;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    -webkit-transition: color 0.3s, font-size 0.1s;
+    -moz-transition: color 0.3s, font-size 0.1s;
+    -ms-transition: color 0.3s, font-size 0.1s;
+    -o-transition: color 0.3s, font-size 0.1s;
+    transition: color 0.3s, font-size 0.1s;
 
+}
+.admin-delete-photo:hover{
+    color: #c0392b;
+    font-size: 73px;
+}
