@@ -94,6 +94,10 @@
                             {!! Form::label('spec', 'მთავარი') !!}
                             {!! Form::checkbox('spec[]', '3') !!}
                             {!! Form::label('spec', 'Top Seller') !!}
+                            {!! Form::checkbox('spec[]', '4') !!}
+                            {!! Form::label('spec', 'დაზოგე') !!}
+                            {!! Form::checkbox('spec[]', '5') !!}
+                            {!! Form::label('spec', 'ყველაზე ნახვადი') !!}
                         </div>
                         <div class="form-group">
                             <h3>აირჩიე ფერი</h3>

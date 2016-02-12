@@ -46,32 +46,23 @@
                 <!-- carousel-slide -->
                 <div class="block carousel-slide">
                     <div class="block-head">
-                        <h4 class="widget-title">big save</h4>
+                        <h4 class="widget-title">დაზოგე</h4>
                     </div>
                     <div class="block-inner">
                         <ul class="list-slide kt-owl-carousel" data-loop="true" data-nav="true" data-responsive='{"0":{"items":1},"600":{"items":2},"768":{"items":1}}'>
+                            @foreach($itemsave as $it)
                             <li>
                                 <div class="image">
-                                    <a href="#"><img src="{{url()}}/assets/site/data/option3/b5.jpg" alt="Banner"></a>
+                                    <a href="{{url()}}/item/{{$it->slug}}/{{$it->id}}"><img src="{{url()}}/uploads/item/{{$it->main_image}}" alt="Banner"></a>
                                 </div>
                                 <div class="title">
-                                    <a href="#">Unleash the Fun with the Lenovo S60</a>
+                                    <a href="{{url()}}/item/{{$it->slug}}/{{$it->id}}">{{$it->title_geo}}</a>
                                 </div>
                                 <div class="button-action">
-                                    <a href="#" class="button-radius">SHOP NOW<span class="icon"></span></a>
+                                    <a href="#" class="button-radius">შეიძინე<span class="icon"></span></a>
                                 </div>
                             </li>
-                            <li>
-                                <div class="image">
-                                    <a href="#"><img src="{{url()}}/assets/site/data/option3/b6.jpg" alt="Banner"></a>
-                                </div>
-                                <div class="title">
-                                    <a href="#">Unleash the Fun with the Lenovo S60</a>
-                                </div>
-                                <div class="button-action">
-                                    <a href="#" class="button-radius">SHOP NOW<span class="icon"></span></a>
-                                </div>
-                            </li>
+                                @endforeach
                         </ul>
                     </div>
                 </div>
@@ -79,17 +70,17 @@
                 <!-- Top review -->
                 <div class="block block-top-review">
                     <div class="block-head">
-                        <h4 class="widget-title">Top review</h4>
+                        <h4 class="widget-title">ყველაზე ნახვადი</h4>
                     </div>
                     <div class="block-inner">
                         <div class="kt-owl-carousel" data-loop="true" data-nav="true" data-items="1">
                             <ul class="list-product">
+                                @foreach($itemtop as $it)
                                 <li class="product active">
-                                    <a class="product-name" href="#"><span class="order">1</span>Cotton Lycra Leggings</a>
+                                    <a class="product-name" href="{{url()}}/item/{{$it->slug}}/{{$it->id}}"><span class="order"></span>{{url()}}/item/{{$it->slug}}/{{$it->id}}"</a>
                                     <div class="product-info">
                                         <div class="price-box">
                                             <span class="product-price">$139.98</span>
-                                            <span class="product-price-old">$169.00</span>
                                         </div>
                                         <div class="product-star">
                                             <i class="fa fa-star"></i>
@@ -103,6 +94,7 @@
                                         </div>
                                     </div>
                                 </li>
+                                @endforeach
                                 <li class="product">
                                     <a class="product-name" href="#"><span class="order">2</span>Cotton Lycra Leggings</a>
                                     <div class="product-info">

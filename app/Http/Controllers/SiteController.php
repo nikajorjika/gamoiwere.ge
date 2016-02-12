@@ -81,7 +81,9 @@ class SiteController extends Controller
         $category = $data['category'] = Category::with('SubCategory')->orderBy('created_at', 'asc')->get();
          $data['itemcar'] = Items::orderBy('category_id','asc')->get();
         $data['itemshot'] = Items::where('spec','like','%1%')->orderBy('created_at', 'asc')->get();
-        $data['onlyur'] = Items::where('spec','like','%0%')->get();
+        $data['onlyur'] = Items::where('spec','like','%0%')->orderBy('created_at', 'asc')->get();
+        $data['itemsave'] = Items::where('spec','like','%4%')->orderBy('created_at', 'asc')->get();
+        $data['itemtop'] = Items::where('spec','like','%5%')->orderBy('created_at', 'asc')->get();
         $data['news'] = News::orderBy('created_at', 'asc')->take(3)->skip(0)->get();
         $data['staff'] = Staff::orderBy('created_at', 'asc')->take(4)->skip(0)->get();
         return view('site.index',$data);
@@ -100,7 +102,10 @@ class SiteController extends Controller
     }
     public function ShowContact()
     {
-        return view('site.contact');
+
+        $data['partner'] = Partner::orderBy('created_at', 'asc')->get();
+        $data['category'] = Category::with('SubCategory')->orderBy('created_at', 'asc')->get();
+        return view('site.contact',$data);
 
     }
     public function ShowNews()
@@ -126,6 +131,9 @@ class SiteController extends Controller
     }
     public function ShowAbout()
     {
+
+        $data['partner'] = Partner::orderBy('created_at', 'asc')->get();
+        $data['category'] = Category::with('SubCategory')->orderBy('created_at', 'asc')->get();
         $data['news'] = News::orderBy('created_at', 'asc')->get();
         $data['partner'] = Partner::orderBy('created_at', 'asc')->get();
         $data['staff'] = Staff::orderBy('created_at', 'asc')->get();
