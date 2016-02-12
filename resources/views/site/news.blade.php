@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div class="col-sm-8 col-md-9">
-                <h1 class="page-title">სიახლეები</h1>
+                <h1 class="page-title priv-info">სიახლეები</h1>
                 <div class="main-page">
                     <div class="page-content clearfix">
                         <ul class="blog-posts">

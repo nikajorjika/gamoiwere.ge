@@ -59,6 +59,10 @@
 	color: #fff;
 	background: #27ae60;
 }
+.center
+{
+	text-align: center;
+}
 .priv-info
 {
 	color: #fff;
@@ -69,6 +73,12 @@
 {
 	color: #fff;
 	background: #2980b9;
+	padding: 20px;
+}
+.comment-info
+{
+	color: #fff;
+	background: #5a88ca;
 	padding: 20px;
 }
 .shipping-info
@@ -1414,7 +1424,6 @@
 	padding: 0 15px;
 	text-transform: uppercase;
 	float: left;
-	border-radius: 20px;
 	position: relative;
 }
 .block-tabs .nav-tab li a:before {

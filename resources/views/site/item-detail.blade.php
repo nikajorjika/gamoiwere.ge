@@ -150,7 +150,6 @@
                                     <div class="comment-content">
                                         <div class="comment-meta">
                                             <a href="#" class="comment-author">jon Conner</a>
-                                            <span class="comment-date">March 14, 2013 at 8:03 am</span>
                                             <div class="review-rating">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
@@ -161,9 +160,6 @@
                                         </div>
                                         <div class="comment-entry">
                                             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
-                                        </div>
-                                        <div class="comment-actions">
-                                            <a class="comment-reply-link" href="#"><i class="fa fa-share"></i> Reply</a>
                                         </div>
                                     </div>
                                 </li>

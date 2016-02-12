@@ -383,8 +383,6 @@ img.alignright{
   padding: 15px 20px;
   border-bottom: 1px solid #eaeaea;
   background: #fbfbfb;
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
 }
 .block .block-inner{
   width: 100%;
@@ -414,8 +412,6 @@ img.alignright{
   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
   border-top: 1px solid #eaeaea;
   border-left: 1px solid #eaeaea;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
   border-radius: 5px;
   float: left;
   max-width: 100%;
@@ -425,8 +421,6 @@ img.alignright{
 .block3 .block-head{
   border-bottom: 1px solid #eaeaea;
   background: #fff;
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
   overflow: hidden;
 }
 .block3 .block-inner{
@@ -445,7 +439,6 @@ img.alignright{
   line-height: 43px;
   text-transform: uppercase;
   padding: 0 20px;
-  border-top-left-radius: 5px;
   float: left;
 }
 .block3 .block-head .customNavigation-owl{

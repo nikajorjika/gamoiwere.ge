@@ -29,10 +29,7 @@
                                         <a href="{{url()}}/news/{{$s->slug}}/{{$s->id}}"><img src="{{url()}}/uploads/news/{{$s->image}}" alt="{{$s->title_geo}}"></a>
                                     </div>
                                     <div class="post-info">
-                                        <h5 class="entry_title"><a href="post.html">{{$s->title_geo}}</a></h5>
-                                        <div class="post-meta">
-                                            <span class="date"> {{$s->created_at}}</span>
-                                        </div>
+                                        <h5 class="entry_title center"><a href="post.html">{{$s->title_geo}}</a></h5>
                                     </div>
                                 </li>
                             @endforeach
@@ -46,7 +43,7 @@
             </div>
             <div class="col-sm-8 col-md-9">
                 <div class="main-page">
-                    <h1 class="page-title">{{$news->title_geo}}</h1>
+                    <h1 class="page-title priv-info">{{$news->title_geo}}</h1>
                     <div class="page-content clearfix">
                         <article class="entry-detail">
                             <div class="entry-photo">
@@ -57,7 +54,7 @@
                                </div>
                         </article>
                         <div id="comments">
-                            <h4 class="comments-title">კომენტარები</h4>
+                            <h4 class="comments-title comment-info" >კომენტარები</h4>
                             <ol class="comment-list">
                                 @foreach($comment as $c)
                                 <li class="comment">
@@ -67,7 +64,6 @@
                                     <div class="comment-content">
                                         <div class="comment-meta">
                                             <a  class="comment-author">{{$c->fullname}}</a>
-                                            <span class="comment-date">{{$c->created_at}}</span>
                                         </div>
                                         <div class="comment-entry">
                                             <p>{{$c->comment}}</p>
