@@ -656,7 +656,7 @@ img.alignright{
 .products .product-container .inner{
   overflow: hidden;
   position: relative;
-  padding-bottom: 57px;
+  padding-bottom: 0px;
 }
 .products .product-thumb{
   position: relative;
@@ -787,6 +787,7 @@ img.alignright{
   border-radius: 0;
 }
 .products .desc{
+  width: 95%;
   padding: 20px 0;
   line-height: 20px;
 }

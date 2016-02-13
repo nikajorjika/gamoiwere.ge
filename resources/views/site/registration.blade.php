@@ -27,6 +27,13 @@
                                      'id' => 'lastanme']) !!}
                             </p>
                             <p>
+                                <label for="priv">პირადობის ნომერი</label>
+                                {!! Form::text('priv', null,
+                                    ['required',
+                                     'class'=>'form-control',
+                                     'id' => 'priv']) !!}
+                            </p>
+                            <p>
                                 <label for="email">ელ-ფოსტა</label>
                                 {!! Form::text('email', null,
                                     ['required',

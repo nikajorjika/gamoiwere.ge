@@ -47,7 +47,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group search-input">
-                                    <input type="text" placeholder="What are you looking for?">
+                                    <input type="text" >
                                 </div>
                                 <button type="submit" class="btn-search"><i class="fa fa-search"></i></button>
                             </form>
@@ -140,7 +140,6 @@
         </div>
         <!-- ./main header -->
     </div>
-    <div class="container">
         <div class="row">
             <!-- main menu-->
             <div class="main-menu">
@@ -210,5 +209,5 @@
             </div>
             <!-- ./main menu-->
         </div>
-    </div>
+        </div>
 </header>

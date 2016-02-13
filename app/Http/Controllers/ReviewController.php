@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Comment;
+use App\Review;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Redirect;
 
-class CommentController extends Controller
+class ReviewController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +18,8 @@ class CommentController extends Controller
      */
     public function index($id)
     {
-        $data['comment'] = Comment::where('news_id', $id)->get();
-        return view('admin.comment', $data);
+        $data['review'] = Review::where('item_id', $id)->get();
+        return view('admin.review', $data);
     }
 
     /**
@@ -38,10 +38,10 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store($id,Request $request)
+    public function store($id, Request $request)
     {
-        $comment = new Comment();
-        $comment->news_id = $request->input('news_id');
+        $comment = new Review();
+        $comment->item_id = $request->input('news_id');
         $comment->fill($request->all());
         $comment->save();
         return Redirect::back();
@@ -87,9 +87,9 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($commentid,$id)
+    public function destroy($reviewid,$id)
     {
-        Comment::destroy($id);
-        return Redirect::route('admin.comment.show', $commentid);
+         Review::destroy($reviewid,$id);
+        return Redirect::route('admin.review.show', $reviewid);
     }
 }

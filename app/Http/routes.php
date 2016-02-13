@@ -111,6 +111,10 @@ Route::get('news/{slug}/{id}', [
 Route::post('news/{slug}/{id}', [
     'uses' => 'CommentController@store'
 ]);
+Route::post('item/{slug}/{id}', [
+    'uses' => 'ReviewController@store'
+]);
+
 Route::get('staff/{slug}/{id}', [
     'uses' => 'SiteController@ShowStaffDetail',
     'as'   => 'site.show.staff.detail',
@@ -323,6 +327,22 @@ Route::group(['prefix' => 'admin'], function () {
             'uses' => 'ItemController@destroy',
             'as' => 'admin.item.delete',
         ])->where('id', '[0-9]+');
+        Route::get('{id}/review', [
+            'middleware' => 'auth',
+            'uses' => 'ReviewController@index',
+            'as' => 'admin.review.show',
+        ])->where('id', '[0-9]+');
+
+        Route::post('{id}/photos', [
+            'middleware' => 'auth',
+            'uses' => 'PhotoController@store'
+        ]);
+
+        Route::get('{id}/review/delete/{reviewId}', [
+            'middleware' => 'auth',
+            'uses' => 'ReviewController@destroy',
+            'as' => 'admin.review.delete',
+        ])->where('id', '[0-9]+')->where('reviewId', '[0-9]+');
 
     });
 

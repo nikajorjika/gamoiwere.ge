@@ -169,7 +169,11 @@
 	background: #f9f9f9;
 	min-height: 50px;
 }
-
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover
+{
+	background-color: #fd7400;
+	border-color: #fd7400;
+}
 /*-------------------
 [2. Advanced Search]
 --------------------*/

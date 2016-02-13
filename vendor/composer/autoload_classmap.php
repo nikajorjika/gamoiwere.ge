@@ -490,6 +490,7 @@ return array(
     'Pages' => $baseDir . '/database/migrations/2015_12_04_164506_pages.php',
     'Partners' => $baseDir . '/database/migrations/2015_12_07_181422_partners.php',
     'Photos' => $baseDir . '/database/migrations/2015_12_04_164048_photos.php',
+    'Review' => $baseDir . '/database/migrations/2016_02_13_102021_Review.php',
     'SebastianBergmann\\Comparator\\ArrayComparator' => $vendorDir . '/sebastian/comparator/src/ArrayComparator.php',
     'SebastianBergmann\\Comparator\\Comparator' => $vendorDir . '/sebastian/comparator/src/Comparator.php',
     'SebastianBergmann\\Comparator\\ComparisonFailure' => $vendorDir . '/sebastian/comparator/src/ComparisonFailure.php',

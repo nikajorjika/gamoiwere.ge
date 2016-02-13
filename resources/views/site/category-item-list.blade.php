@@ -129,7 +129,7 @@
             <div class="sortPagiBar-inner">
                 <nav>
                     <ul class="pagination">
-                        {{$item->render()}}
+                            {!! $item->render()!!}
                     </ul>
                 </nav>
             </div>

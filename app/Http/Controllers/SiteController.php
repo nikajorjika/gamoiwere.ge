@@ -6,6 +6,7 @@ use App\Album;
 use App\Category;
 use App\ItemPhotos;
 use App\Items;
+use App\Review;
 use App\SubCategory;
 use App\Comment;
 use App\Library;
@@ -50,27 +51,30 @@ class SiteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function showItemDetail($slug, $id){
+    public function showItemDetail($slug, $id)
+    {
         $data['item'] = Items::findOrFail($id);
         $item = Items::findOrFail($id);
-        if(is_dir( public_path().'/uploads/photos/'.$id.'/')){
-            $photos  = scandir(public_path().'/uploads/photos/'.$id.'/',1);
+        if (is_dir(public_path() . '/uploads/photos/' . $id . '/')) {
+            $photos = scandir(public_path() . '/uploads/photos/' . $id . '/', 1);
             $files = array_diff($photos, array('.', '..'));
-        }else{
+        } else {
             $files = [];
         }
-        $data['item_id'] = $id;
-        $data['itemphotos'] = $files;
-        $data['colors'] = Items::find($id)->ItemColors()->get();
-        $data['sizes'] = Items::find($id)->ItemSize()->get();
-        $data['partner'] = Partner::orderBy('created_at', 'asc')->get();
-        $data['category'] = Category::with('SubCategory')->orderBy('created_at', 'asc')->get();
-        $data['topseller'] = Items::where('category_id','1')->get();
-        $data['categorytop'] = Category::findOrFail($item->category_id);
-        $data['subcategorytop'] = SubCategory::findOrFail($item->subcategory_id);
-        $data['related'] = Items::where('category_id',$item->category_id)->get();
-        return view('site.item-detail',$data);
-    }
+            $data['review'] = Review::where('item_id', $id)->get();
+            $data['item_id'] = $id;
+            $data['itemphotos'] = $files;
+            $data['colors'] = Items::find($id)->ItemColors()->get();
+            $data['sizes'] = Items::find($id)->ItemSize()->get();
+            $data['partner'] = Partner::orderBy('created_at', 'asc')->get();
+            $data['category'] = Category::with('SubCategory')->orderBy('created_at', 'asc')->get();
+            $data['topseller'] = Items::where('category_id', '1')->get();
+            $data['categorytop'] = Category::findOrFail($item->category_id);
+            $data['subcategorytop'] = SubCategory::findOrFail($item->subcategory_id);
+            $data['related'] = Items::where('category_id', $item->category_id)->get();
+            return view('site.item-detail', $data);
+        }
+
 
     public function index()
     {
@@ -78,8 +82,8 @@ class SiteController extends Controller
         $data['sideslider'] = SideSlider::orderBy('created_at', 'asc')->get();
         $data['partner'] = Partner::orderBy('created_at', 'asc')->get();
         $data['category'] = Category::with('SubCategory')->orderBy('created_at', 'asc')->get();
-        $category = $data['category'] = Category::with('SubCategory')->orderBy('created_at', 'asc')->get();
          $data['itemcar'] = Items::orderBy('category_id','asc')->get();
+         $data['items'] = Items::orderBy('created_at','asc')->paginate(45);
         $data['itemshot'] = Items::where('spec','like','%1%')->orderBy('created_at', 'asc')->get();
         $data['onlyur'] = Items::where('spec','like','%0%')->orderBy('created_at', 'asc')->get();
         $data['itemsave'] = Items::where('spec','like','%4%')->orderBy('created_at', 'asc')->get();

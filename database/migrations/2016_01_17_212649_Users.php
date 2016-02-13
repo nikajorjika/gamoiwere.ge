@@ -17,6 +17,7 @@ class Users extends Migration
             $table->string('firstname');
             $table->string('lastname');
             $table->string('mobile');
+            $table->string('priv');
             $table->string('address1');
             $table->string('address2');
             $table->string('email')->unique();

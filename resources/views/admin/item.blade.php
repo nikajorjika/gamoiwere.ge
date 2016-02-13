@@ -38,6 +38,9 @@
                                 <td>{{$n->title_geo}}</td>
                                 <td>{!! $n->content_geo !!}</td>
                                 <td>
+                                    <a href="{{route('admin.review.show', $n->id)}}">
+                                        <button class="btn btn-primary" style="width: 32%">მიმოხილვა</button>
+                                    </a>
                                     <a href="{{route('admin.item.edit', $n->id)}}">
                                         <button class="btn btn-warning" style="width: 49%">შესწორება</button>
                                     </a>

@@ -144,25 +144,19 @@
                 <div class="tab-container">
                     <div id="review" class="tab-panel active">
                         <div id="reviews">
-                            <h4 class="comments-title">{{$item->title_geo}}</h4>
                             <ol class="comment-list">
+                                @foreach($review as $r)
                                 <li class="comment">
                                     <div class="comment-content">
                                         <div class="comment-meta">
-                                            <a href="#" class="comment-author">jon Conner</a>
-                                            <div class="review-rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-half-o"></i>
-                                            </div>
+                                            <a href="#" class="comment-author">{{$r->fullname}}</a>
                                         </div>
                                         <div class="comment-entry">
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's</p>
+                                            <p>{{$r->comment}}</p>
                                         </div>
                                     </div>
                                 </li>
+                                    @endforeach
                             </ol>
                             <div class="comment-form">
                                 {!! Form::open(['method' => 'post'],$item->id) !!}
